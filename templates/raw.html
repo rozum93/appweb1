@@ -1,0 +1,42 @@
+<!-- extend layout -->
+{% extends "index.html" %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Dane</h1>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Created at</th>
+        <th>Email</th>
+        <th>Rok</th>
+        <th>Lata</th>
+        <th>Satisfaction</th>
+        <th>Python</th>
+        <th>Flask</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for element in formdata %}
+    <tr>
+        <td>{{ element.id }}</td>
+        <td>{{ element.created_at }}</td>
+        <td>{{ element.email }}</td>
+        <td>{{ element.rok }}</td>
+        <td>{{ element.lata }}</td>
+        <td>{{ element.satisfaction }}</td>
+        <td>{{ element.czas}}</td>
+        <td>{{ element.spotkania}}</td>
+        <td>{{ element.tematyka }}</td>
+
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
