@@ -33,8 +33,8 @@ db.create_all()
 
 
 @app.route("/")
-def witaj():
-    return render_template('witaj.html')
+def index():
+    return render_template('index.html')
 
 @app.route("/form")
 def show_form():
@@ -77,7 +77,7 @@ def show_result():
     # Prepare data for google charts
     data = [['Python skill', mean_czas], ['Flask skill', mean_spotkania], ['Tematyka', mean_tematyka]]
 
-    return render_template('result.html', data=data)
+    return render_template('wyniki.html', data=data)
 
 
 @app.route("/save", methods=['POST'])
