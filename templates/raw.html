@@ -9,30 +9,22 @@
 <table class="table">
     <thead>
     <tr>
-        <th>#</th>
-        <th>Created at</th>
+        <th>Uzupełniono</th>
         <th>Email</th>
-        <th>Rok</th>
-        <th>Lata</th>
-        <th>Satisfaction</th>
-        <th>Python</th>
-        <th>Flask</th>
-    </tr>
+        <th>Rok studiów</th>
+        <th>Czy działasz w organizacji</th>
+        <th>Czas działalności w organizacji</th>
+        </tr>
     </thead>
 
     <tbody>
-    {% for element in formdata %}
+    {% for element in dane %}
     <tr>
-        <td>{{ element.id }}</td>
         <td>{{ element.created_at }}</td>
         <td>{{ element.email }}</td>
         <td>{{ element.rok }}</td>
         <td>{{ element.lata }}</td>
-        <td>{{ element.satisfaction }}</td>
         <td>{{ element.czas}}</td>
-        <td>{{ element.spotkania}}</td>
-        <td>{{ element.tematyka }}</td>
-
     </tr>
     {% endfor %}
     </tbody>
