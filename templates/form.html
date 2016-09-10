@@ -1,0 +1,96 @@
+<!-- extend base layout -->
+{% extends "index.html" %}
+
+{% block content %}
+
+<div class="page-header">
+  <h1>Wypełnij ankietę</h1>
+</div>
+
+<form role="form" action="/save" method="post">
+    <h3>Dane studenta</h3>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+    <div class="form-group">
+        <label for="rok">Rok studiów</label>
+        <input type="number" class="form-control" id="rok" name="rok" min="1" max="5" required>
+    </div>
+    <h3>Dane dotyczące działaności w organizacjach studneckich</h3>
+    <h5> Wybierz jedną z poniższych opcji</h5>
+    <div class="form-group">
+      <label for="lata">Jak długo działasz w organizacji studenckiej</label>
+      <select class="form-control" id="lata" name="lata">
+        <option>Mniej niż rok</option>
+        <option>1 rok</option>
+        <option>2-3 lata</option>
+        <option>Powyżej 3 lat</option>
+      </select>
+    </div>
+    <h3>Ankieta</h3>
+    <b>Jak dużo czasu poświęcasz na działanie w organizacji studenckiej?
+	<b>Wybierz jedną z poniższych</b>
+    <div class="form-group">
+        <label class="radio-inline">
+          <input type="radio" name="czas" value="1">Poniżej kilku godzin tygodniowo
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="czas" value="2">Kilka godzin tygodniowo
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="czas" value="3">Kilka godzin dziennie
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="czas" value="4">Więcej
+        </label>
+    </div>
+    <b>Jak często uczestniczysz w spotkaniach związanych z organizacją</b>
+    <div class="form-group">
+        <label class="radio-inline">
+          <input type="radio" name="spotkania" value="1">Codziennie i więcej
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="spotkania" value="2">Kilka razy w tygodniu
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="spotkania" value="3" checked>Raz w tygodniu
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="spotkania" value="4">Raz w miesiącu
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="spotkania" value="5">Mniej
+        </label>
+    </div>
+<b>Tematyka organizacji </b>
+    <div class="form-group">
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="1">Naukowe/techniczne
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="2">Umiejętności miękkie
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="3" checked>Artystyczne
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="4">Sportowe
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="5">Kulturalno-rozrywkowe
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="6">Inne
+        </label>
+
+    </div>
+
+    <button type="submit" class="btn btn-default">Zapisz</button>
+</form>
+
+{% endblock %}
+
+
+
+
