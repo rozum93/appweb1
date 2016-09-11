@@ -4,15 +4,12 @@ from datetime import datetime
 import statistics
 
 app = Flask(__name__)
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///dane.db'
-#powinna utworzyc sie baza o nazwie dane.db- ja takamam
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = 'True'
 
 db = SQLAlchemy(app)
 
 class Dane(db.Model):
-    #tu definiujemy zmienne w bazie, byc mozetrezba dodac id
     __tablename__ = 'dane'
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.DateTime, default=datetime.now)
@@ -33,26 +30,25 @@ class Dane(db.Model):
 
 db.create_all()
 
-# te wszystkie zaczynajace sie od malpki pozwalaja pozniej na przekierowanie na stronie do odpowiednich plikow html
 @app.route("/")
 def index():
-    return render_template('index.html')
-#tu jest nasz formularz, wyswietlany na stronie
+    return render_template('witaj.html')
+
 @app.route("/form")
 def show_form():
     return render_template('form.html')
 
-#ta czesc odpowiada za wyswietlanie danych w wierszach
+
 @app.route("/raw")
 def show_raw():
     fd = db.session.query(Dane).all()
     return render_template('raw.html', dane=fd)
 
-# w tej czesci maja pojawic sie wykresy
+
 @app.route("/wyniki")
 def show_result():
     fd_list = db.session.query(Dane).all()
-#robi tablice z poszczegolnych danych i nastepnie liczy srednia
+
     czas = []
     spotkania = []
     tematyka = []
@@ -77,12 +73,12 @@ def show_result():
     else:
         mean_tematyka = 0
 
-    # przygotowywuje dane, aby mogly byc uzyte w google charts
-    data = [['Czas', mean_czas], ['Ilość spotkań', mean_spotkania], ['Tematyka', mean_tematyka]]
+
+    data = [['Czas', mean_czas], ['Ilosc spotkan', mean_spotkania], ['Tematyka', mean_tematyka]]
 
     return render_template('wyniki.html', data=data)
 
-#pobieranie danych z formularza
+
 @app.route("/save", methods=['POST'])
 def save():
     # Get data from FORM
