@@ -4,8 +4,15 @@
 {% block content %}
 
 <div class="page-header">
-  <h1>Wypełnij ankietę</h1>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <h1>Wypełnij ankietę</h1>
+        </div>
+    </div>
 </div>
+
+<div id="page-content-wrapper">
+<div class="container-fluid">
 
 <form role="form" action="/save" method="post">
     <h3>Dane studenta</h3>
@@ -17,10 +24,14 @@
         <label for="rok">Rok studiów</label>
         <input type="number" class="form-control" id="rok" name="rok" min="1" max="5" required>
     </div>
-    <h3>Dane dotyczące działanośc w organizacjach studneckich</h3>
-    <h5> Wybierz jedną z poniższych opcji</h5>
+    <h3>Dane dotyczące działanośc w organizacjach studenckich</h3>
+    <h5> W jakiej organizacji studenckiej działasz? </h5>
+        <div class="form-group">
+      <label for="lata">Do jakiej organizacji studenckiej należysz?</label>
+        <input type="text" class="form-control" id="organizacja" name="organizacja" required>
+    </div>
     <div class="form-group">
-      <label for="lata">Jak długo działasz w organizacji studenckiej</label>
+      <label for="lata">Jak długo działasz w tej organizacji studenckiej?</label>
       <select class="form-control" id="lata" name="lata">
         <option>Mniej niż rok</option>
         <option>1 rok</option>
@@ -28,66 +39,74 @@
         <option>Powyżej 3 lat</option>
       </select>
     </div>
+
     <h3>Ankieta</h3>
     <b>Jak dużo czasu poświęcasz na działanie w organizacji studenckiej?
 	<b>Wybierz jedną z poniższych</b>
     <div class="form-group">
         <label class="radio-inline">
-          <input type="radio" name="czas" value="1">Poniżej kilku godzin tygodniowo
+          <input type="radio" name="czas" value="1">Kilka godzin w roku
         </label>
         <label class="radio-inline">
-          <input type="radio" name="czas" value="2">Kilka godzin tygodniowo
+          <input type="radio" name="czas" value="2">Kilka godzin w miesiącu
         </label>
         <label class="radio-inline">
-          <input type="radio" name="czas" value="3">Kilka godzin dziennie
+          <input type="radio" name="czas" value="3">Kilka godzin tygodniowo
         </label>
         <label class="radio-inline">
-          <input type="radio" name="czas" value="4">Więcej
+          <input type="radio" name="czas" value="4">Kilka godzin dziennie
         </label>
     </div>
-    <b>Jak często uczestniczysz w spotkaniach związanych z organizacją</b>
+    <b>Jak często uczestniczysz w spotkaniach związanych z organizacjami?</b>
     <div class="form-group">
         <label class="radio-inline">
-          <input type="radio" name="spotkania" value="1">Codziennie i więcej
+          <input type="radio" name="spotkania" value="1">Kilka razy w tygodniu
         </label>
         <label class="radio-inline">
-          <input type="radio" name="spotkania" value="2">Kilka razy w tygodniu
+          <input type="radio" name="spotkania" value="2">Raz w tygodniu
         </label>
         <label class="radio-inline">
-          <input type="radio" name="spotkania" value="3" checked>Raz w tygodniu
+          <input type="radio" name="spotkania" value="3" checked>Kilka razy w miesiącu
         </label>
         <label class="radio-inline">
           <input type="radio" name="spotkania" value="4">Raz w miesiącu
         </label>
         <label class="radio-inline">
-          <input type="radio" name="spotkania" value="5">Mniej
+          <input type="radio" name="spotkania" value="5">Mniej niż raz w miesiącu
         </label>
     </div>
 <b>Tematyka organizacji </b>
     <div class="form-group">
         <label class="radio-inline">
-          <input type="radio" name="tematyka" value="1">Naukowe/techniczne
+          <input type="radio" name="tematyka" value="1">Naukowa/techniczne
         </label>
         <label class="radio-inline">
-          <input type="radio" name="tematyka" value="2">Umiejętności miękkie
+          <input type="radio" name="tematyka" value="2">Soft skills
         </label>
         <label class="radio-inline">
-          <input type="radio" name="tematyka" value="3" checked>Artystyczne
+          <input type="radio" name="tematyka" value="3">Artystyczna
         </label>
         <label class="radio-inline">
-          <input type="radio" name="tematyka" value="4">Sportowe
+          <input type="radio" name="tematyka" value="4">Sportowa
         </label>
         <label class="radio-inline">
-          <input type="radio" name="tematyka" value="5">Kulturalno-rozrywkowe
+          <input type="radio" name="tematyka" value="5">Kulturalno-rozrywkowa
         </label>
         <label class="radio-inline">
-          <input type="radio" name="tematyka" value="6">Inne
+          <input type="radio" name="tematyka" value="6">Samorządowa
         </label>
-
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="7">Wolontariat/Pomoc społeczna
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="tematyka" value="8">Inna
+        </label>
     </div>
 
     <button type="submit" class="btn btn-default">Zapisz</button>
 </form>
+
+    </div> </div>
 
 {% endblock %}
 

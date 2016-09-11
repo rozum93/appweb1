@@ -4,25 +4,55 @@
 {% block content %}
 
 <div class="page-header">
-    <h1>Wyniki</h1>
-    <div id="chart_div"></div>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <h1>Wyniki</h1>
+            <div id="timeChart_div"></div>
+            <div id="meetingsChart_div"></div>
+            <div id="topicChart_div"></div>
+        </div>
+     </div>
  </div>
 
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
     google.load('visualization', '1', {'packages':['corechart']});
-    google.setOnLoadCallback(drawChart);
+    google.setOnLoadCallback(drawTimeChart);
 
-    function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Question');
-        data.addColumn('number', 'Average answer');
-        data.addRows({{ data|tojson }});
+    function drawTimeChart() {
+        var timeData = new google.visualization.DataTable();
+        timeData.addColumn('string', 'Question');
+        timeData.addColumn('number', 'Answer');
+        timeData.addRows({{ timeData|tojson }});
 
-    var chart = new google.visualization.ColumnChart(
-            document.getElementById('chart_div'));
-    chart.draw(data, {legend: 'none', vAxis: {baseline: 0} });
+
+    var timeChart = new google.visualization.PieChart(
+            document.getElementById('timeChart_div'));
+    timeChart.draw(timeData, {legend: 'none', vAxis: {baseline: 0} });
+
+        var meetingsData = new google.visualization.DataTable();
+        meetingsData.addColumn('string', 'Question');
+        meetingsData.addColumn('number', 'Answer');
+        meetingsData.addRows({{ meetingsData|tojson }});
+
+    var meetingsChart = new google.visualization.PieChart(
+            document.getElementById('meetingsChart_div'));
+    meetingsChart.draw(meetingsData, {legend: 'none', vAxis: {baseline: 0} });
+
+        var topicData = new google.visualization.DataTable();
+        topicData.addColumn('string', 'Question');
+        topicData.addColumn('number', 'Answer');
+        topicData.addRows({{ topicData|tojson }});
+
+    var topicChart = new google.visualization.PieChart(
+            document.getElementById('topicChart_div'));
+    topicChart.draw(topicData, {legend: 'none', vAxis: {baseline: 0} });
+
   }
+
+
+
+
     </script>
 
 {% endblock %}

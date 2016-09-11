@@ -2,33 +2,42 @@
 {% extends "index.html" %}
 
 {% block content %}
-<div class="page-header">
-    <h1>Dane</h1>
+<div class="container">
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1>Dane</h1>
+            </div>
+        </div>
 </div>
 
-<table class="table">
-    <thead>
-    <tr>
-        <th>Uzupełniono</th>
-        <th>Email</th>
-        <th>Rok studiów</th>
-        <th>Czy działasz w organizacji</th>
-        <th>Czas działalności w organizacji</th>
-        </tr>
-    </thead>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
 
-    <tbody>
-    {% for element in dane %}
-    <tr>
-        <td>{{ element.created_at }}</td>
-        <td>{{ element.email }}</td>
-        <td>{{ element.rok }}</td>
-        <td>{{ element.lata }}</td>
-        <td>{{ element.czas}}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Uzupełniono</th>
+                <th>Email</th>
+                <th>Rok studiów</th>
+                <th>Jak długo działasz w organizacji?</th>
+                <th>Jaka to organizacja?</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            {% for element in dane %}
+            <tr>
+                <td>{{ element.created_at }}</td>
+                <td>{{ element.email }}</td>
+                <td>{{ element.rok }}</td>
+                <td>{{ element.lata }}</td>
+                <td>{{ element.organizacja }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+     </div>
+</div>
 
 
 {% endblock %}

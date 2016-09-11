@@ -16,14 +16,16 @@ class Dane(db.Model):
     email = db.Column(db.String, nullable=False)
     rok = db.Column(db.Integer)
     lata = db.Column(db.String)
+    organizacja = db.Column(db.String)
     czas = db.Column(db.Integer)
     spotkania = db.Column(db.Integer)
     tematyka = db.Column(db.Integer)
 
-    def __init__(self, email, rok, lata, czas, spotkania, tematyka):
+    def __init__(self, email, rok, lata, organizacja, czas, spotkania, tematyka):
         self.email = email
         self.rok = rok
         self.lata = lata
+        self.organizacja = organizacja
         self.czas = czas
         self.spotkania = spotkania
         self.tematyka = tematyka
@@ -49,34 +51,25 @@ def show_raw():
 def show_result():
     fd_list = db.session.query(Dane).all()
 
-    czas = []
-    spotkania = []
-    tematyka = []
+    czas = [0, 0, 0, 0]
+    spotkania = [0, 0, 0, 0, 0]
+    tematyka =  [0, 0, 0, 0, 0, 0, 0, 0]
 
     for el in fd_list:
-        czas.append(int(el.czas))
-        spotkania.append(int(el.spotkania))
-        tematyka.append(int(el.tematyka))
-
-    if len(czas) > 0:
-        mean_czas = statistics.mean(czas)
-    else:
-       mean_czas = 0
-
-    if len(spotkania) > 0:
-        mean_spotkania = statistics.mean(spotkania)
-    else:
-        mean_spotkania = 0
-
-    if len(tematyka) > 0:
-        mean_tematyka = statistics.mean(tematyka)
-    else:
-        mean_tematyka = 0
+        czas[el.czas-1] =+ 1
+        spotkania[el.spotkania-1] =+ 1
+        tematyka[el.tematyka-1] =+ 1
 
 
-    data = [['Czas', mean_czas], ['Ilosc spotkan', mean_spotkania], ['Tematyka', mean_tematyka]]
 
-    return render_template('wyniki.html', data=data)
+    print(spotkania)
+    timeData = [["Kilka godzin w roku", czas[0]], ["Kilka godzin w miesiacu", czas[1]], ["Kilka godzin w tygodniu", czas[2]], ["Kilka godzin dziennie", czas[3]]]
+    meetingsData = [["Kilka razy w tygodniu", spotkania[0]], ["Raz w tygodniu", spotkania[1]], ["Kilka razy w miesiacu", spotkania[2]], ["Raz w miesiacu", spotkania[3]], ["Mniej niz raz w miesiacu", spotkania[4]]]
+    topicData = [["Naukowo-techniczna", tematyka[0]], ["Soft-skills", tematyka[1]], ["Artystyczna", tematyka[2]], ["Sportowa", tematyka[3]], ["Kulturalno-rozrywkowa", tematyka[4]], ["Samorzadowa", tematyka[5]], ["Wolontariat/Pomoc spoleczna", tematyka[6]], ["Inna", tematyka[7]]]
+
+
+    print(timeData)
+    return render_template('wyniki.html', timeData=timeData, meetingsData=meetingsData, topicData=topicData)
 
 
 @app.route("/save", methods=['POST'])
@@ -85,13 +78,14 @@ def save():
     email = request.form['email']
     rok = request.form['rok']
     lata = request.form['lata']
+    organizacja = request.form['organizacja']
     czas = request.form['czas']
     spotkania = request.form['spotkania']
     tematyka = request.form['tematyka']
 
 
     # Save the data
-    fd = Dane(email, rok, lata, czas, spotkania, tematyka)
+    fd = Dane(email, rok, lata, organizacja, czas, spotkania, tematyka)
     db.session.add(fd)
     db.session.commit()
 
