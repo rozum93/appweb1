@@ -54,22 +54,21 @@ def show_result():
     czas = [0, 0, 0, 0]
     spotkania = [0, 0, 0, 0, 0]
     tematyka =  [0, 0, 0, 0, 0, 0, 0, 0]
+    pplCounter = 0
 
     for el in fd_list:
-        czas[el.czas-1] =+ 1
-        spotkania[el.spotkania-1] =+ 1
-        tematyka[el.tematyka-1] =+ 1
+        czas[el.czas-1] += 1
+        spotkania[el.spotkania-1] += 1
+        tematyka[el.tematyka-1] += 1
+        pplCounter += 1
 
+    print(tematyka)
 
-
-    print(spotkania)
     timeData = [["Kilka godzin w roku", czas[0]], ["Kilka godzin w miesiacu", czas[1]], ["Kilka godzin w tygodniu", czas[2]], ["Kilka godzin dziennie", czas[3]]]
     meetingsData = [["Kilka razy w tygodniu", spotkania[0]], ["Raz w tygodniu", spotkania[1]], ["Kilka razy w miesiacu", spotkania[2]], ["Raz w miesiacu", spotkania[3]], ["Mniej niz raz w miesiacu", spotkania[4]]]
-    topicData = [["Naukowo-techniczna", tematyka[0]], ["Soft-skills", tematyka[1]], ["Artystyczna", tematyka[2]], ["Sportowa", tematyka[3]], ["Kulturalno-rozrywkowa", tematyka[4]], ["Samorzadowa", tematyka[5]], ["Wolontariat/Pomoc spoleczna", tematyka[6]], ["Inna", tematyka[7]]]
+    topicData = [["Naukowo-techniczna", tematyka[0]], ["Soft-skills", tematyka[1]], ["Artystyczna", tematyka[2]], ["Sportowa", tematyka[3]], ["Kulturalno-rozrywkowa", tematyka[4]], ["Samorzadowa", tematyka[5]], ["Wolontariat", tematyka[6]], ["Inna", tematyka[7]]]
 
-
-    print(timeData)
-    return render_template('wyniki.html', timeData=timeData, meetingsData=meetingsData, topicData=topicData)
+    return render_template('wyniki.html', timeData=timeData, meetingsData=meetingsData, topicData=topicData, pplCounter=pplCounter)
 
 
 @app.route("/save", methods=['POST'])

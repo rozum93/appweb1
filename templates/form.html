@@ -5,32 +5,31 @@
 
 <div class="page-header">
     <div id="page-content-wrapper">
-        <div class="container-fluid">
-            <h1>Wypełnij ankietę</h1>
+        <div class="container-fluid" style="margin-top: 100px">
+            <h1>Wypelnij ankiete</h1>
         </div>
     </div>
 </div>
 
 <div id="page-content-wrapper">
-<div class="container-fluid">
+<div class="container-fluid" style="text-align: left !important">
 
-<form role="form" action="/save" method="post">
-    <h3>Dane studenta</h3>
-    <div class="form-group">
+<form role="form" action="/save" method="post" class="form-horizontal">
+    <h2>Dane studenta</h2>
+    <div class="form-group" style="margin-left: 50px">
         <label for="email">Email</label>
         <input type="email" class="form-control" id="email" name="email" required>
     </div>
-    <div class="form-group">
+    <div class="form-group" style="margin-bottom: 50px; margin-left: 50px">
         <label for="rok">Rok studiów</label>
         <input type="number" class="form-control" id="rok" name="rok" min="1" max="5" required>
     </div>
-    <h3>Dane dotyczące działanośc w organizacjach studenckich</h3>
-    <h5> W jakiej organizacji studenckiej działasz? </h5>
-        <div class="form-group">
-      <label for="lata">Do jakiej organizacji studenckiej należysz?</label>
-        <input type="text" class="form-control" id="organizacja" name="organizacja" required>
-    </div>
-    <div class="form-group">
+    <h2>Dane dotyczace dzialalnosci w organizacjach studenckich</h2>
+        <div class="form-group" style="margin-left: 10px">
+            <label for="lata">Do jakiej organizacji studenckiej należysz?</label>
+            <input type="text" class="form-control" id="organizacja" name="organizacja" value="Tu wpisz nazwę organizacji" required>
+        </div>
+    <div class="form-group" style="margin-bottom: 40px; margin-left: 10px">
       <label for="lata">Jak długo działasz w tej organizacji studenckiej?</label>
       <select class="form-control" id="lata" name="lata">
         <option>Mniej niż rok</option>
@@ -40,70 +39,70 @@
       </select>
     </div>
 
-    <h3>Ankieta</h3>
+    <h2>Ankieta</h2>
     <b>Jak dużo czasu poświęcasz na działanie w organizacji studenckiej?
 	<b>Wybierz jedną z poniższych</b>
-    <div class="form-group">
-        <label class="radio-inline">
+    <div class="form-check" style="margin-bottom: 40px; margin-left: 50px !important;">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="czas" value="1">Kilka godzin w roku
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="czas" value="2">Kilka godzin w miesiącu
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="czas" value="3">Kilka godzin tygodniowo
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="czas" value="4">Kilka godzin dziennie
         </label>
     </div>
     <b>Jak często uczestniczysz w spotkaniach związanych z organizacjami?</b>
-    <div class="form-group">
-        <label class="radio-inline">
+    <div class="form-check" style="margin-bottom: 40px;margin-left: 50px !important;">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="spotkania" value="1">Kilka razy w tygodniu
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="spotkania" value="2">Raz w tygodniu
         </label>
-        <label class="radio-inline">
-          <input type="radio" name="spotkania" value="3" checked>Kilka razy w miesiącu
+        <label class="radio" style="font-weight: lighter !important">
+          <input type="radio" name="spotkania" value="3">Kilka razy w miesiącu
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="spotkania" value="4">Raz w miesiącu
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="spotkania" value="5">Mniej niż raz w miesiącu
         </label>
     </div>
 <b>Tematyka organizacji </b>
-    <div class="form-group">
-        <label class="radio-inline">
+    <div class="form-check" style="margin-left: 50px !important;">
+        <label class="radio" style="font-weight: lighter !important;">
           <input type="radio" name="tematyka" value="1">Naukowa/techniczne
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="tematyka" value="2">Soft skills
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="tematyka" value="3">Artystyczna
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="tematyka" value="4">Sportowa
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="tematyka" value="5">Kulturalno-rozrywkowa
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="tematyka" value="6">Samorządowa
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="tematyka" value="7">Wolontariat/Pomoc społeczna
         </label>
-        <label class="radio-inline">
+        <label class="radio" style="font-weight: lighter !important">
           <input type="radio" name="tematyka" value="8">Inna
         </label>
     </div>
 
-    <button type="submit" class="btn btn-default">Zapisz</button>
+    <button type="submit" class="btn btn-default" style="margin-top: 30px">Zapisz</button>
 </form>
 
     </div> </div>

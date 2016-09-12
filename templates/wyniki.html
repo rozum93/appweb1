@@ -5,11 +5,12 @@
 
 <div class="page-header">
     <div id="page-content-wrapper">
-        <div class="container-fluid">
+        <div class="container-fluid" style="text-align: left !important; margin-top: 100px">
             <h1>Wyniki</h1>
-            <div id="timeChart_div"></div>
-            <div id="meetingsChart_div"></div>
-            <div id="topicChart_div"></div>
+            W ankiecie wzięło udział {{ pplCounter }} osób.
+            <div id="timeChart_div" style="width: 900px; height: 500px"></div>
+            <div id="meetingsChart_div" style="width: 900px; height: 500px">></div>
+            <div id="topicChart_div" style="width: 900px; height: 500px">></div>
         </div>
      </div>
  </div>
@@ -25,28 +26,49 @@
         timeData.addColumn('number', 'Answer');
         timeData.addRows({{ timeData|tojson }});
 
+        var timeOptions = {
+            legend: 'none',
+            pieSliceText: 'label',
+            title: 'Analiza czasu jaki przeznaczają studenci na dzialalnosc w organizacji studenckiej',
+            pieStartAngle: 100,
+        };
+
 
     var timeChart = new google.visualization.PieChart(
             document.getElementById('timeChart_div'));
-    timeChart.draw(timeData, {legend: 'none', vAxis: {baseline: 0} });
+    timeChart.draw(timeData, timeOptions);
 
         var meetingsData = new google.visualization.DataTable();
         meetingsData.addColumn('string', 'Question');
-        meetingsData.addColumn('number', 'Answer');
+        meetingsData.addColumn('number', 'Odpowiedz');
         meetingsData.addRows({{ meetingsData|tojson }});
+
+        var meetingsOptions = {
+            legend: 'none',
+            pieSliceText: 'label',
+            title: 'Analiza częstotliwości spotkań w organizacjach studenckich',
+            pieStartAngle: 100,
+        };
 
     var meetingsChart = new google.visualization.PieChart(
             document.getElementById('meetingsChart_div'));
-    meetingsChart.draw(meetingsData, {legend: 'none', vAxis: {baseline: 0} });
+    meetingsChart.draw(meetingsData, meetingsOptions);
 
         var topicData = new google.visualization.DataTable();
         topicData.addColumn('string', 'Question');
         topicData.addColumn('number', 'Answer');
         topicData.addRows({{ topicData|tojson }});
 
-    var topicChart = new google.visualization.PieChart(
+        var topicOptions = {
+            legend: 'none',
+            title: 'Analiza charakteru organizacji do jakich należą studenci',
+        };
+
+    var topicChart = new google.visualization.ColumnChart(
             document.getElementById('topicChart_div'));
-    topicChart.draw(topicData, {legend: 'none', vAxis: {baseline: 0} });
+    topicChart.draw(topicData, topicOptions);
+
+    var pplCounter = {{ pplCounter|tojson }}
 
   }
 
